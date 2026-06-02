@@ -395,13 +395,13 @@ function HomePage() {
               <table className="mt-4 w-full text-sm">
                 <tbody>
                   {[
-                    ["Lunes", "Por confirmar"],
-                    ["Martes", "Abierto — cierra a las 20:00*"],
-                    ["Miércoles", "Por confirmar"],
-                    ["Jueves", "Por confirmar"],
-                    ["Viernes", "Por confirmar"],
-                    ["Sábado", "Por confirmar"],
-                    ["Domingo", "Por confirmar"],
+                    ["Lunes", "8:00–16:00 · 19:00–23:00"],
+                    ["Martes", "8:00–16:00 · 19:00–23:00"],
+                    ["Miércoles", "Cerrado"],
+                    ["Jueves", "8:00–16:00 · 19:00–23:00"],
+                    ["Viernes", "8:00–16:00 · 19:00–23:00"],
+                    ["Sábado", "8:00–1:00"],
+                    ["Domingo", "8:00–23:00"],
                   ].map(([d, h]) => (
                     <tr key={d} className="border-t border-border">
                       <td className="py-2 font-medium">{d}</td>
@@ -411,7 +411,7 @@ function HomePage() {
                 </tbody>
               </table>
               <p className="mt-4 text-xs text-muted-foreground">
-                * Pendiente de confirmar. Horarios sujetos a cambios. Confirma por teléfono o Instagram.
+                Horarios sujetos a cambios. Confirma por teléfono o Instagram.
               </p>
             </div>
           </Reveal>

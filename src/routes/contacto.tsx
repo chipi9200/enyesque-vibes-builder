@@ -87,10 +87,13 @@ function ContactoPage() {
               <li className="flex items-start gap-3">
                 <Clock size={16} className="mt-1 text-primary" />
                 <div>
-                  <div>Horarios pendientes de confirmar.</div>
-                  <div className="text-xs text-muted-foreground">
-                    Confirma por teléfono o Instagram.
-                  </div>
+                  <div className="font-medium">Horarios</div>
+                  <ul className="mt-1 text-xs text-muted-foreground space-y-0.5">
+                    <li>Lun, Mar, Jue, Vie: 8:00–16:00 · 19:00–23:00</li>
+                    <li>Miércoles: Cerrado</li>
+                    <li>Sábado: 8:00–1:00</li>
+                    <li>Domingo: 8:00–23:00</li>
+                  </ul>
                 </div>
               </li>
             </ul>
