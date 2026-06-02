@@ -22,26 +22,13 @@ export const Route = createFileRoute("/menu-del-dia")({
   component: MenuDiaPage,
 });
 
-const WEEK = [
-  {
-    day: "Hoy",
-    primeros: ["Macarrones boloñesa", "Ensalada de la casa"],
-    segundos: ["Pechuguitas al cabrales", "Berenjena rellena"],
-    postre: "Postre casero o café",
-  },
-  {
-    day: "Mañana",
-    primeros: ["Crema de verduras", "Lentejas estofadas"],
-    segundos: ["Ternera en salsa", "Cachopín asturiano"],
-    postre: "Postre casero o café",
-  },
-  {
-    day: "Próximos días",
-    primeros: ["Pasta del día", "Sopa o crema"],
-    segundos: ["Crepes de pollo o ternera", "Pescado del día"],
-    postre: "Postre casero o café",
-  },
-];
+const MENU = {
+  primeros: ["Salmorejo o gazpacho", "Pisto con huevo", "Judías verdes con jamón"],
+  segundos: ["Calamares a la andaluza", "Filetes de pollo a la plancha", "Solomillo al ajillo"],
+  postres: ["Flan casero", "Fruta de temporada"],
+  precio: "15 €",
+  bebida: "Incluye bebida (agua, refresco, vino o cerveza de barril)",
+};
 
 function MenuDiaPage() {
   return (
@@ -49,39 +36,38 @@ function MenuDiaPage() {
       <Reveal>
         <SectionTitle
           eyebrow="Menú del día"
-          title="Cocina casera, cambia a diario"
-          subtitle="Estos son ejemplos orientativos. Para confirmar el menú de hoy, llámanos o pregúntanos en el local."
+          title="Menú diario por 15 €"
+          subtitle="Cocina casera con primero, segundo, postre y bebida incluida. La selección puede variar según disponibilidad."
         />
       </Reveal>
 
-      <div className="mt-10 grid md:grid-cols-3 gap-4">
-        {WEEK.map((d, i) => (
-          <Reveal key={d.day} delay={i * 0.06}>
-            <article className="rounded-2xl bg-card border border-border p-6 h-full">
-              <div className="font-label text-xs tracking-[0.25em] text-primary">{d.day.toUpperCase()}</div>
-              <h3 className="mt-1 font-display text-xl">Menú</h3>
-              <div className="mt-4 space-y-3 text-sm">
-                <div>
-                  <div className="font-semibold">Primeros</div>
-                  <ul className="text-muted-foreground list-disc list-inside">
-                    {d.primeros.map((p) => <li key={p}>{p}</li>)}
-                  </ul>
-                </div>
-                <div>
-                  <div className="font-semibold">Segundos</div>
-                  <ul className="text-muted-foreground list-disc list-inside">
-                    {d.segundos.map((p) => <li key={p}>{p}</li>)}
-                  </ul>
-                </div>
-                <div>
-                  <div className="font-semibold">Postre / Café</div>
-                  <p className="text-muted-foreground">{d.postre}</p>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal>
+        <article className="mt-10 rounded-2xl bg-card border border-border p-8 max-w-2xl mx-auto text-center">
+          <div className="font-label text-xs tracking-[0.25em] text-primary">MENÚ DIARIO</div>
+          <div className="mt-6 grid sm:grid-cols-3 gap-6 text-sm text-left">
+            <div>
+              <div className="font-semibold mb-2">Primer plato</div>
+              <ul className="text-muted-foreground space-y-1">
+                {MENU.primeros.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </div>
+            <div>
+              <div className="font-semibold mb-2">Segundo plato</div>
+              <ul className="text-muted-foreground space-y-1">
+                {MENU.segundos.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </div>
+            <div>
+              <div className="font-semibold mb-2">Postres</div>
+              <ul className="text-muted-foreground space-y-1">
+                {MENU.postres.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 font-display text-4xl text-espresso">{MENU.precio}</div>
+          <p className="mt-2 text-xs text-muted-foreground">{MENU.bebida}</p>
+        </article>
+      </Reveal>
 
       <Reveal>
         <div className="mt-10 rounded-2xl bg-secondary/60 border border-border p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
