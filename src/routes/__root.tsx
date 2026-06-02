@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Cafetería y restaurante en Bargas (Toledo). Desayunos con tortilla recomendada, raciones, tapas y menú del día casero. Reserva por WhatsApp: 692 26 11 08.",
       },
       { name: "author", content: "ENYESQUE" },
-      { property: "og:title", content: "ENYESQUE Cafetería y Restaurante en Bargas" },
+      { property: "og:title", content: "ENYESQUE Cafetería y Restaurante en Bargas | Desayunos, Tapas y Menú del día" },
       {
         property: "og:description",
         content:
@@ -98,6 +98,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ENYESQUE" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "ENYESQUE Cafetería y Restaurante en Bargas | Desayunos, Tapas y Menú del día" },
+      { name: "description", content: "ENYESQUE Vibes Builder creates a vibrant website for ENYESQUE Cafetería / Restaurante." },
+      { property: "og:description", content: "ENYESQUE Vibes Builder creates a vibrant website for ENYESQUE Cafetería / Restaurante." },
+      { name: "twitter:description", content: "ENYESQUE Vibes Builder creates a vibrant website for ENYESQUE Cafetería / Restaurante." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e932d9f4-2371-4f74-abea-b4237925c7a2/id-preview-4d60a0c4--84a4756d-cf83-4fe9-bf17-cb030cbf05bf.lovable.app-1780404448452.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e932d9f4-2371-4f74-abea-b4237925c7a2/id-preview-4d60a0c4--84a4756d-cf83-4fe9-bf17-cb030cbf05bf.lovable.app-1780404448452.png" },
     ],
     links: [
       {
