@@ -11,6 +11,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { FloatingActions } from "@/components/site/FloatingActions";
+import { BUSINESS } from "@/lib/business";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +81,54 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "ENYESQUE Cafetería y Restaurante en Bargas | Desayunos, Tapas y Menú del día" },
+      {
+        name: "description",
+        content:
+          "Cafetería y restaurante en Bargas (Toledo). Desayunos con tortilla recomendada, raciones, tapas y menú del día casero. Reserva por WhatsApp: 692 26 11 08.",
+      },
+      { name: "author", content: "ENYESQUE" },
+      { property: "og:title", content: "ENYESQUE Cafetería y Restaurante en Bargas" },
+      {
+        property: "og:description",
+        content:
+          "Desayunos, tapas, raciones y menú del día casero. Bargas (Toledo).",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ENYESQUE" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          name: BUSINESS.full,
+          telephone: BUSINESS.phoneRaw,
+          priceRange: "€€",
+          servesCuisine: ["Española", "Tapas", "Casera"],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "C. Comercio, 11",
+            postalCode: "45593",
+            addressLocality: "Bargas",
+            addressRegion: "Toledo",
+            addressCountry: "ES",
+          },
+          sameAs: [BUSINESS.instagram],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: BUSINESS.rating,
+            reviewCount: BUSINESS.reviews,
+          },
+        }),
       },
     ],
   }),
@@ -118,8 +157,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+        <FloatingActions />
+      </div>
     </QueryClientProvider>
   );
 }
