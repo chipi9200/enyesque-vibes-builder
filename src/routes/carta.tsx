@@ -44,15 +44,91 @@ const SECTIONS = [
     ],
   },
   {
-    id: "tapas",
-    title: "Tapas y raciones",
+    id: "raciones-pescado",
+    title: "Raciones · Pescado",
     items: [
-      { name: "Ensaladilla Enyesque", desc: "Receta de la casa, cremosa y bien servida.", badge: "Top ventas" },
-      { name: "Patatas bravas", desc: "Salsa brava casera." },
-      { name: "Calamares a la andaluza", desc: "Rebozado fino y crujiente." },
-      { name: "Oreja a la plancha", desc: "Con un toque de pimentón." },
-      { name: "Huevos rotos con jamón ibérico", desc: "Patata, huevo y buen jamón.", badge: "Top ventas" },
-      { name: "Fingers de pollo crujientes", desc: "Con salsas para mojar." },
+      { name: "Sepia a la plancha", desc: "", price: "15,00 €" },
+      { name: "Calamares a la andaluza", desc: "Rebozado fino y crujiente.", price: "12,50 €" },
+      { name: "Gambón a la plancha", desc: "", price: "15,00 €" },
+      { name: "Gambón al ajillo", desc: "", price: "15,00 €" },
+      { name: "Pulpo a la gallega", desc: "Con pimentón y aceite de oliva.", price: "22,00 €" },
+      { name: "Chipirones con salsa americana", desc: "", price: "16,00 €" },
+      { name: "Cazón", desc: "En adobo.", price: "12,00 €" },
+    ],
+  },
+  {
+    id: "raciones-carne",
+    title: "Raciones · Carne",
+    items: [
+      { name: "Torreznos de Soria", desc: "Por unidad.", price: "8,00 €" },
+      { name: "Oreja a la plancha", desc: "Con un toque de pimentón.", price: "10,00 €" },
+      { name: "Solomillo de cerdo al ajillo", desc: "", price: "14,00 €" },
+      { name: "Revuelto de morcilla", desc: "", price: "10,00 €" },
+      { name: "Magro con tomate", desc: "", price: "11,00 €" },
+      { name: "Callos caseros", desc: "Receta tradicional.", price: "14,00 €" },
+      { name: "Filetitos de ciervo", desc: "", price: "14,50 €" },
+      { name: "Fingers de pollo", desc: "Con salsas para mojar.", price: "10,90 €" },
+      { name: "Entrecot con guarnición", desc: "", price: "20,00 €" },
+      { name: "Chuletitas de lechal", desc: "", price: "s/m" },
+      { name: "Croquetas caseras de jamón", desc: "Cremosas por dentro, crujientes por fuera.", price: "12,00 €" },
+      { name: "Patatas bravas", desc: "Salsa brava casera.", price: "8,00 €" },
+      { name: "Ensaladilla Rusa", desc: "Receta de la casa.", price: "8,50 €", badge: "Top ventas" },
+      { name: "Huevos rotos con chistorra", desc: "", price: "12,50 €" },
+      { name: "Huevos rotos con jamón", desc: "Patata, huevo y buen jamón.", price: "12,50 €", badge: "Top ventas" },
+    ],
+  },
+  {
+    id: "bocadillos",
+    title: "Bocadillos y montados",
+    items: [
+      { name: "Beicon", desc: "Bocadillo 7,50 € · Montado 3,50 €" },
+      { name: "Lomo", desc: "Bocadillo 7,50 € · Montado 3,50 €" },
+      { name: "Calamares", desc: "Bocadillo 7,50 € · Montado 4,00 €" },
+      { name: "Pollo, queso y cebolla", desc: "Bocadillo 5,50 € · Montado 3,50 €" },
+    ],
+  },
+  {
+    id: "por-encargo",
+    title: "Por encargo (mínimo 4 personas)",
+    items: [
+      { name: "Paella mixta", desc: "Por persona.", price: "14,00 €" },
+      { name: "Arroz negro", desc: "Por persona.", price: "14,00 €" },
+      { name: "Arroz con bogavante", desc: "Por persona.", price: "18,00 €" },
+    ],
+  },
+  {
+    id: "asados",
+    title: "Asados",
+    items: [
+      { name: "Paletilla de lechal", desc: "Asada en horno tradicional.", price: "s/m" },
+      { name: "Pierna de cordero de lechal", desc: "", price: "s/m" },
+    ],
+  },
+  {
+    id: "ensaladas",
+    title: "Ensaladas",
+    items: [
+      { name: "Ensalada de pollo", desc: "", price: "12,50 €" },
+      { name: "Ensalada de burrata", desc: "Con tomate y aceite virgen extra.", price: "13,50 €" },
+      { name: "Ensalada de pote con atún", desc: "", price: "13,50 €" },
+    ],
+  },
+  {
+    id: "tostas",
+    title: "Tostas",
+    items: [
+      { name: "Tosta de solomillo con cebolla caramelizada", desc: "", price: "11,00 €" },
+      { name: "Tosta de salmón con guacamole", desc: "", price: "11,00 €" },
+    ],
+  },
+  {
+    id: "hamburguesas",
+    title: "Hamburguesas y sándwiches",
+    items: [
+      { name: "Hamburguesa completa", desc: "", price: "12,00 €" },
+      { name: "Hamburguesa de pollo", desc: "", price: "8,00 €" },
+      { name: "Sándwich mixto", desc: "", price: "3,00 €" },
+      { name: "Sándwich cubano", desc: "", price: "4,00 €" },
     ],
   },
   {
@@ -130,7 +206,7 @@ function CartaPage() {
                   <ul className="divide-y divide-border">
                     {s.items.map((it) => (
                       <li key={it.name} className="py-3 flex items-start justify-between gap-4">
-                        <div>
+                        <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{it.name}</span>
                             {"badge" in it && it.badge && (
@@ -139,8 +215,15 @@ function CartaPage() {
                               </span>
                             )}
                           </div>
-                          <p className="text-sm text-muted-foreground mt-0.5">{it.desc}</p>
+                          {it.desc && (
+                            <p className="text-sm text-muted-foreground mt-0.5">{it.desc}</p>
+                          )}
                         </div>
+                        {"price" in it && it.price && (
+                          <span className="font-medium text-primary whitespace-nowrap shrink-0">
+                            {it.price}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
