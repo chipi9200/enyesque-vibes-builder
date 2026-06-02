@@ -206,7 +206,7 @@ function CartaPage() {
                   <ul className="divide-y divide-border">
                     {s.items.map((it) => (
                       <li key={it.name} className="py-3 flex items-start justify-between gap-4">
-                        <div>
+                        <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{it.name}</span>
                             {"badge" in it && it.badge && (
@@ -215,8 +215,15 @@ function CartaPage() {
                               </span>
                             )}
                           </div>
-                          <p className="text-sm text-muted-foreground mt-0.5">{it.desc}</p>
+                          {it.desc && (
+                            <p className="text-sm text-muted-foreground mt-0.5">{it.desc}</p>
+                          )}
                         </div>
+                        {"price" in it && it.price && (
+                          <span className="font-medium text-primary whitespace-nowrap shrink-0">
+                            {it.price}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
