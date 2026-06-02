@@ -22,7 +22,6 @@ export const Route = createFileRoute("/menu-del-dia")({
   component: MenuDiaPage,
 });
 
-const WEEK = [
 const MENU = {
   primeros: ["Salmorejo o gazpacho", "Pisto con huevo", "Judías verdes con jamón"],
   segundos: ["Calamares a la andaluza", "Filetes de pollo a la plancha", "Solomillo al ajillo"],
