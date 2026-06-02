@@ -13,7 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import heroImg from "@/assets/hero-interior.jpg";
-import tortillaImg from "@/assets/tortilla.jpg";
+import tortillaAsset from "@/assets/tortilla-real.jpg.asset.json";
 import tapasImg from "@/assets/tapas.jpg";
 import terrazaImg from "@/assets/terraza.jpg";
 import menuImg from "@/assets/menu-dia.jpg";
@@ -183,7 +183,7 @@ function HomePage() {
             {
               t: "Tortilla que engancha",
               p: "Jugosa por dentro, dorada por fuera. La estrella del desayuno.",
-              img: tortillaImg,
+              img: tortillaAsset.url,
             },
             {
               t: "Cantidades razonables",
