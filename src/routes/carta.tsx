@@ -8,6 +8,13 @@ import {
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { Reveal } from "@/components/site/Reveal";
 import { QrCode, ChevronRight } from "lucide-react";
+import imgEnsaladilla from "@/assets/plato-ensaladilla.jpg";
+import imgHuevosRotos from "@/assets/plato-huevos-rotos.jpg";
+import imgTortilla from "@/assets/plato-tortilla.jpg";
+import imgCroquetas from "@/assets/plato-croquetas.jpg";
+import imgPulpo from "@/assets/plato-pulpo.jpg";
+import imgCalamares from "@/assets/plato-calamares.jpg";
+import imgBravas from "@/assets/plato-bravas.jpg";
 
 export const Route = createFileRoute("/carta")({
   head: () => ({
@@ -40,6 +47,7 @@ const SECTIONS = [
         name: "Tortilla de patata",
         desc: "Jugosa, hecha al momento.",
         badge: "Muy recomendada",
+        image: imgTortilla,
       },
     ],
   },
@@ -48,10 +56,10 @@ const SECTIONS = [
     title: "Raciones · Pescado",
     items: [
       { name: "Sepia a la plancha", desc: "", price: "15,00 €" },
-      { name: "Calamares a la andaluza", desc: "Rebozado fino y crujiente.", price: "12,50 €" },
+      { name: "Calamares a la andaluza", desc: "Rebozado fino y crujiente.", price: "12,50 €", image: imgCalamares },
       { name: "Gambón a la plancha", desc: "", price: "15,00 €" },
       { name: "Gambón al ajillo", desc: "", price: "15,00 €" },
-      { name: "Pulpo a la gallega", desc: "Con pimentón y aceite de oliva.", price: "22,00 €" },
+      { name: "Pulpo a la gallega", desc: "Con pimentón y aceite de oliva.", price: "22,00 €", image: imgPulpo },
       { name: "Chipirones con salsa americana", desc: "", price: "16,00 €" },
       { name: "Cazón", desc: "En adobo.", price: "12,00 €" },
     ],
@@ -70,11 +78,11 @@ const SECTIONS = [
       { name: "Fingers de pollo", desc: "Con salsas para mojar.", price: "10,90 €" },
       { name: "Entrecot con guarnición", desc: "", price: "20,00 €" },
       { name: "Chuletitas de lechal", desc: "", price: "s/m" },
-      { name: "Croquetas caseras de jamón", desc: "Cremosas por dentro, crujientes por fuera.", price: "12,00 €" },
-      { name: "Patatas bravas", desc: "Salsa brava casera.", price: "8,00 €" },
-      { name: "Ensaladilla Rusa", desc: "Receta de la casa.", price: "8,50 €", badge: "Top ventas" },
+      { name: "Croquetas caseras de jamón", desc: "Cremosas por dentro, crujientes por fuera.", price: "12,00 €", image: imgCroquetas },
+      { name: "Patatas bravas", desc: "Salsa brava casera.", price: "8,00 €", image: imgBravas },
+      { name: "Ensaladilla Rusa", desc: "Receta de la casa.", price: "8,50 €", badge: "Top ventas", image: imgEnsaladilla },
       { name: "Huevos rotos con chistorra", desc: "", price: "12,50 €" },
-      { name: "Huevos rotos con jamón", desc: "Patata, huevo y buen jamón.", price: "12,50 €", badge: "Top ventas" },
+      { name: "Huevos rotos con jamón", desc: "Patata, huevo y buen jamón.", price: "12,50 €", badge: "Top ventas", image: imgHuevosRotos },
     ],
   },
   {
@@ -206,7 +214,17 @@ function CartaPage() {
                   <ul className="divide-y divide-border">
                     {s.items.map((it) => (
                       <li key={it.name} className="py-3 flex items-start justify-between gap-4">
-                        <div className="flex-1">
+                        {"image" in it && it.image && (
+                          <img
+                            src={it.image}
+                            alt={it.name}
+                            width={768}
+                            height={768}
+                            loading="lazy"
+                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover shrink-0"
+                          />
+                        )}
+                        <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{it.name}</span>
                             {"badge" in it && it.badge && (
